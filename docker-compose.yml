@@ -1,0 +1,28 @@
+version: '3'
+services:
+  db:
+    image: postgres:10.8-alpine
+    container_name: rails_app_docker_db
+    environment:
+      # POSTGRES_USER: ${DB_USER}
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 
+      POSTGRES_DB: rails_app_docker_development
+    ports:
+      - 5432:5432
+  app:
+    build:
+      context: .
+      dockerfile: ./docker/app/Dockerfile
+    container_name: rails_app_docker_app
+    depends_on:
+      - db
+  web:
+    build:
+      context: . 
+      dockerfile: ./docker/web/Dockerfile
+    container_name: rails_app_docker_web
+    ports:
+      - 80:80
+    depends_on:
+      - app
