@@ -9,7 +9,7 @@ services:
       POSTGRES_PASSWORD: 
       POSTGRES_DB: rails_app_docker_development
     ports:
-      - 5432:5432
+      - 7000:5432
   app:
     build:
       context: .
