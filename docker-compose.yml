@@ -23,6 +23,6 @@ services:
       dockerfile: ./docker/web/Dockerfile
     container_name: rails_app_docker_web
     ports:
-      - 80:80
+      - 7001:80
     depends_on:
       - app
